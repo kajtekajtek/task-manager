@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+
+  application:
+    name: task-manager
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+  datasource:
+    url: jdbc:h2:mem:employeedb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  jpa:
+    # explicitly set database dialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    # show SQL in logs
+    show-sql: true
+    hibernate:
+      # update database schema when code changes (development only)
+      ddl-auto: update
+      # format SQL in logs
+      format_sql: true
+  
+  security:
+    admin:
+      username: ${ADMIN_USERNAME}
+      password: ${ADMIN_PASSWORD}
